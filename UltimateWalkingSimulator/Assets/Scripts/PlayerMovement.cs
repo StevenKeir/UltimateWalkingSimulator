@@ -6,15 +6,19 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour {
 
-    private Rigidbody2D myRB;
 
+    private Rigidbody2D myRB;
+    [Header("Movement settings ")]
     public GameObject player;
     public float speed = 13f;
     public float jumpforce = 850f;
-    public bool grounded;
-    public LayerMask groundLayer;
   
+    [Header("Distance to surface Settings")]
     public float distToGround = 1.1f;
+    [Tooltip("Match with the surfaces layer.")]
+    public LayerMask groundLayer;
+    public bool grounded;    
+
     private float fallTime = 0.2f;
 
     public void Awake()

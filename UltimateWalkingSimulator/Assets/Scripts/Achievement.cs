@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Achievement : MonoBehaviour {
 
+    public PlayerMovement myMovement;
+
     public string[] achievementText = new string[14];
     public string currentAchievement;
 
@@ -35,6 +37,21 @@ public class Achievement : MonoBehaviour {
         ListOfAchievements();
         Timer();
         ClockAchievements();
+
+        if (myMovement.haveMoved == true)
+        {
+            runOnce++;
+            currentAchievement = achievementText[2];
+            AchievementGained();
+        }
+
+        if (myMovement.haveJumped == true)
+        {
+            runOnce++;
+            currentAchievement = achievementText[3];
+            AchievementGained();
+        }
+
     }
 
     void ExclamationMultiplyer ()
@@ -54,23 +71,23 @@ public class Achievement : MonoBehaviour {
 
     void ClockAchievements ()
     {
-        if (clock >= 120 && runOnce == 2)
+        if (clock >= 120 && runOnce == 0)
         {
+            runOnce++;
             currentAchievement = achievementText[8];
             AchievementGained();
-            runOnce++;
         }
-        else if (clock >= 60 && runOnce == 1)
+        else if (clock >= 60 && runOnce == 0)
         {
+            runOnce++;
             currentAchievement = achievementText[7];
             AchievementGained();
-            runOnce++;
         }
         else if (clock >= 10 && runOnce == 0)
         {
+            runOnce++;
             currentAchievement = achievementText[6];
             AchievementGained();
-            runOnce++;
         }
     }
 
@@ -80,7 +97,7 @@ public class Achievement : MonoBehaviour {
         ExclamationMultiplyer();
         printAchievement.text = "ACHIEVEMENT UNLOCKED!!! " + currentAchievement + exclamation;
         amountOfAchievements++;
-
+        runOnce = 0;
     }
 
     void ListOfAchievements()

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour {
 
+    public Achievement myAchievement;
 
     private Rigidbody2D myRB;
     [Header("Movement settings ")]
@@ -17,7 +18,9 @@ public class PlayerMovement : MonoBehaviour {
     public float distToGround = 1.1f;
     [Tooltip("Match with the surfaces layer.")]
     public LayerMask groundLayer;
-    public bool grounded;    
+    public bool grounded;
+    public bool haveMoved = false;
+    public bool haveJumped = false;
 
     private float fallTime = 0.2f;
 
@@ -51,6 +54,7 @@ public class PlayerMovement : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space) && grounded == true)
         {
             myRB.AddForce(Vector2.up * jumpforce);         //To stop player from sticking to walls when jumpping add a physics material with 0 on all then "Friction Combine" to minimum
+            haveJumped = true;
         }
    
         if (grounded == false)   //checking if grounded
@@ -75,6 +79,7 @@ public class PlayerMovement : MonoBehaviour {
 
         Vector3 moveVector = new Vector3(moveX, 0, 0) * (Time.deltaTime * speed);
         this.transform.Translate(moveVector, Space.World);
+        haveMoved = true;
     }
 
     void FallFunc()

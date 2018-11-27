@@ -6,21 +6,35 @@ using UnityEngine.UI;
 public class Achievement : MonoBehaviour {
 
     public string[] achievementText = new string[14];
+    public string currentAchievement;
+
     public Text printAchievement;
     public GameObject textBox;
+
     public int amountOfAchievements;
+    public int runOnce = 0;
+    public float clock;
     public string exclamation;
+
+    public bool hitFloor;
+    public bool hitDoor;
+    public bool hitShop;
+    public bool hitCar;
 
     // Use this for initialization
     void Start () {
-		
+
+        currentAchievement = achievementText[0];
+        AchievementGained();
+        clock = 0;
 	}
 	
 	// Update is called once per frame
-	void Update () {
-
+	void Update ()
+    {
         ListOfAchievements();
-   
+        Timer();
+        ClockAchievements();
     }
 
     void ExclamationMultiplyer ()
@@ -33,11 +47,38 @@ public class Achievement : MonoBehaviour {
 
     }
 
+    void Timer ()
+    {
+        clock += Time.deltaTime;
+    }
+
+    void ClockAchievements ()
+    {
+        if (clock >= 120 && runOnce == 2)
+        {
+            currentAchievement = achievementText[8];
+            AchievementGained();
+            runOnce++;
+        }
+        else if (clock >= 60 && runOnce == 1)
+        {
+            currentAchievement = achievementText[7];
+            AchievementGained();
+            runOnce++;
+        }
+        else if (clock >= 10 && runOnce == 0)
+        {
+            currentAchievement = achievementText[6];
+            AchievementGained();
+            runOnce++;
+        }
+    }
+
     void AchievementGained ()
     {
 
         ExclamationMultiplyer();
-        printAchievement.text = "ACHIEVEMENT UNLOCKED!!! " + achievementText + exclamation;
+        printAchievement.text = "ACHIEVEMENT UNLOCKED!!! " + currentAchievement + exclamation;
         amountOfAchievements++;
 
     }
@@ -58,8 +99,38 @@ public class Achievement : MonoBehaviour {
         achievementText[10] = "YOU GOT HIT BY A CAR";
         achievementText[11] = "YOU JAYWALKED";
         achievementText[12] = "YOU GOT HOME WITH THE BREAD";
-        achievementText[12] = "YOU COMPLETED THE GAME";
+        achievementText[13] = "YOU COMPLETED THE GAME";
 
     }
+
+    private void OnTriggerEnter(Collider col)
+    {
+       if (col.gameObject.tag == "Ground" && hitFloor == false)
+        {
+            currentAchievement = achievementText[1];
+            AchievementGained();
+            hitFloor = true;
+        }
+        if (col.gameObject.tag == "Door" && hitDoor == false)
+        {
+            currentAchievement = achievementText[4];
+            AchievementGained();
+            hitDoor = true;
+        }
+        if (col.gameObject.tag == "Shop" && hitShop == false)
+        {
+            currentAchievement = achievementText[5];
+            AchievementGained();
+            hitShop = true;
+        }
+        if (col.gameObject.tag == "Car" && hitCar == false)
+        {
+            currentAchievement = achievementText[10];
+            AchievementGained();
+            hitCar = true;
+        }
+    }
+
+
 
 }

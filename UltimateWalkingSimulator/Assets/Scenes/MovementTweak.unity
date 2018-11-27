@@ -380,7 +380,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4687080646537860, guid: ddbac32583bcff74e91e8eb96fd91a56, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3.023
+      value: -3.36
       objectReference: {fileID: 0}
     - target: {fileID: 4687080646537860, guid: ddbac32583bcff74e91e8eb96fd91a56, type: 2}
       propertyPath: m_LocalPosition.z
@@ -438,6 +438,57 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1138983690 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1815182593994326, guid: ddbac32583bcff74e91e8eb96fd91a56,
+    type: 2}
+  m_PrefabInternal: {fileID: 745915515}
+--- !u!114 &1138983693 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114908033655685864, guid: ddbac32583bcff74e91e8eb96fd91a56,
+    type: 2}
+  m_PrefabInternal: {fileID: 745915515}
+  m_Script: {fileID: 11500000, guid: 4353466581b98d249a177d89b7474cd6, type: 3}
+--- !u!114 &1138983695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1138983690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c59b5f250008443ab021156e080197, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myMovement: {fileID: 1138983693}
+  achievementText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  currentAchievement: 
+  printAchievement: {fileID: 2141971279}
+  textBox: {fileID: 0}
+  amountOfAchievements: 0
+  runOnce: 0
+  clock: 0
+  exclamation: 
+  hitFloor: 0
+  hitDoor: 0
+  hitShop: 0
+  hitCar: 0
+  checkMove: 0
+  checkJump: 0
 --- !u!1 &1164367491
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,7 +554,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 2141971278}
-  - {fileID: 1675620427}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -524,7 +574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 2141971279}
-  textBackGround: {fileID: 1675620425}
+  textBackGround: {fileID: 0}
   faded: 0
   TimeBetweenFade: 1
 --- !u!1 &1363923764
@@ -726,75 +776,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1675620424
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1675620427}
-  - component: {fileID: 1675620426}
-  - component: {fileID: 1675620425}
-  m_Layer: 0
-  m_Name: Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1675620425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1675620424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &1675620426
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1675620424}
-  m_CullTransparentMesh: 0
---- !u!224 &1675620427
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1675620424}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1164367494}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1971511517
 GameObject:
   m_ObjectHideFlags: 0

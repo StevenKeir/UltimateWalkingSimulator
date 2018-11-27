@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Achievement : MonoBehaviour {
 
     public PlayerMovement myMovement;
+    public AudioSource achievementSound;
 
     public string[] achievementText = new string[14];
     public string currentAchievement;
 
-    public Text printAchievement;
+    public TMP_Text printAchievement;
     public GameObject textBox;
 
     public int amountOfAchievements;
@@ -22,6 +24,8 @@ public class Achievement : MonoBehaviour {
     public bool hitDoor;
     public bool hitShop;
     public bool hitCar;
+    public bool checkMove;
+    public bool checkJump;
 
     // Use this for initialization
     void Start () {
@@ -38,18 +42,18 @@ public class Achievement : MonoBehaviour {
         Timer();
         ClockAchievements();
 
-        if (myMovement.haveMoved == true)
+        if (myMovement.haveMoved == true && checkMove == false)
         {
-            runOnce++;
             currentAchievement = achievementText[2];
             AchievementGained();
+            checkMove = true;
         }
 
-        if (myMovement.haveJumped == true)
-        {
-            runOnce++;
+        if (myMovement.haveJumped == true && checkJump == false)
+        { 
             currentAchievement = achievementText[3];
             AchievementGained();
+            checkJump = true;
         }
 
     }
@@ -71,13 +75,13 @@ public class Achievement : MonoBehaviour {
 
     void ClockAchievements ()
     {
-        if (clock >= 120 && runOnce == 0)
+        if (clock >= 120 && runOnce == 2)
         {
             runOnce++;
             currentAchievement = achievementText[8];
             AchievementGained();
         }
-        else if (clock >= 60 && runOnce == 0)
+        else if (clock >= 60 && runOnce == 1)
         {
             runOnce++;
             currentAchievement = achievementText[7];
@@ -96,8 +100,8 @@ public class Achievement : MonoBehaviour {
 
         ExclamationMultiplyer();
         printAchievement.text = "ACHIEVEMENT UNLOCKED!!! " + currentAchievement + exclamation;
+        achievementSound.Play();
         amountOfAchievements++;
-        runOnce = 0;
     }
 
     void ListOfAchievements()
@@ -119,15 +123,20 @@ public class Achievement : MonoBehaviour {
         achievementText[13] = "YOU COMPLETED THE GAME";
 
     }
-
-    private void OnTriggerEnter(Collider col)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-       if (col.gameObject.tag == "Ground" && hitFloor == false)
+
+        if (collision.gameObject.tag == "Ground" && hitFloor == false)
         {
             currentAchievement = achievementText[1];
             AchievementGained();
             hitFloor = true;
         }
+
+    }
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+
         if (col.gameObject.tag == "Door" && hitDoor == false)
         {
             currentAchievement = achievementText[4];

@@ -100,7 +100,7 @@ public class Achievement : MonoBehaviour {
 
         ExclamationMultiplyer();
         printAchievement.text = "ACHIEVEMENT UNLOCKED!!! " + currentAchievement + exclamation;
-        achievementSound.Play();
+        //achievementSound.Play();
         amountOfAchievements++;
     }
 

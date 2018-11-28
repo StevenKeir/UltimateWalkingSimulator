@@ -596,6 +596,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114908033655685864, guid: ddbac32583bcff74e91e8eb96fd91a56,
+        type: 2}
+      propertyPath: jumpforce
+      value: 155
+      objectReference: {fileID: 0}
+    - target: {fileID: 50343777723725810, guid: ddbac32583bcff74e91e8eb96fd91a56,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114908033655685864, guid: ddbac32583bcff74e91e8eb96fd91a56,
+        type: 2}
+      propertyPath: startMoveStoppingTimer
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddbac32583bcff74e91e8eb96fd91a56, type: 2}
   m_IsPrefabAsset: 0
@@ -647,7 +662,9 @@ MonoBehaviour:
   text: {fileID: 2141971279}
   fadingOut: 0
   fadingIn: 0
-  fadeTime: 1
+  timeBetweenFade: 0
+  startTimeBetweenFade: 0
+  fadeTime: 0.75
 --- !u!114 &1138983693 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114908033655685864, guid: ddbac32583bcff74e91e8eb96fd91a56,
@@ -666,6 +683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMovement: {fileID: 1138983693}
+  fadeScript: {fileID: 1138983691}
   achievementSound: {fileID: 407505520}
   finalAchievementSound: {fileID: 48340685}
   HouseDoorSound: {fileID: 1293794724}
@@ -1122,7 +1140,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -0.0000038146973, y: -50}
-  m_SizeDelta: {x: 317.99, y: 50}
+  m_SizeDelta: {x: 800, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2141971279
 MonoBehaviour:
@@ -1143,7 +1161,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Acheivment Unlock
+  m_text: Achievement Unlock
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1177,7 +1195,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 514
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1211,7 +1229,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 0}
-    characterCount: 17
+    characterCount: 18
     spriteCount: 0
     spaceCount: 1
     wordCount: 2

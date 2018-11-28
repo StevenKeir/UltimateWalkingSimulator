@@ -8,43 +8,34 @@ public class FadeText : MonoBehaviour {
 
 
     public TMP_Text text;
-    //public Image textBackGround;
+    
 
     public bool fadingOut;
     public bool fadingIn;
-    private float timeBetweenFade;
+    public float timeBetweenFade;
+    public float startTimeBetweenFade;
     public float fadeTime;
 
     private void Start()
     {
-        fadingOut = false;
-        fadingIn = false;
+        timeBetweenFade = startTimeBetweenFade;
 
     }
     private void Update()
     {
-        if(timeBetweenFade > 1)
+        if(timeBetweenFade >= 1)
         {
-            timeBetweenFade = 1;
-            fadingOut = false;
             fadingIn = false;
+            fadingOut = true;
         }
 
         if(timeBetweenFade < 0)
         {
-            timeBetweenFade = 0;
             fadingOut = false;
-            fadingIn = false;
+            
+            timeBetweenFade = startTimeBetweenFade;
         }
 
-        if (Input.GetKey(KeyCode.E) && fadingIn == false)
-        {
-            fadingOut = true;
-        }
-        if (Input.GetKey(KeyCode.R) && fadingOut == false)
-        {
-            fadingIn = true;
-        }
 
         if (fadingOut == true && fadingIn == false)
         {
@@ -53,6 +44,11 @@ public class FadeText : MonoBehaviour {
         if (fadingIn == true && fadingOut == false)
         {
             TimeFadeIn();
+        }
+        if(fadingIn == true && fadingOut == true)
+        {
+            fadingIn = false;
+            fadingOut = false;
         }
 
     } 
@@ -68,6 +64,7 @@ public class FadeText : MonoBehaviour {
         timeBetweenFade += Time.deltaTime / fadeTime;
         text.alpha = timeBetweenFade;
     }
+
 
 
 }

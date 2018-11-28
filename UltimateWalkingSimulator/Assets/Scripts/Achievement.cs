@@ -8,6 +8,7 @@ public class Achievement : MonoBehaviour
 {
 
     public PlayerMovement myMovement;
+    public FadeText fadeScript;
     public AudioSource achievementSound;
     public AudioSource finalAchievementSound;
     public AudioSource HouseDoorSound;
@@ -59,6 +60,7 @@ public class Achievement : MonoBehaviour
             currentAchievement = achievementText[3];
             AchievementGained();
             checkJump = true;
+            myMovement.jumpedOnce = true;
         }
 
     }
@@ -107,6 +109,12 @@ public class Achievement : MonoBehaviour
         printAchievement.text = "ACHIEVEMENT UNLOCKED!!! " + currentAchievement + exclamation;
         achievementSound.Play();
         amountOfAchievements++;
+        myMovement.canMove = false;
+
+
+
+        fadeScript.fadingIn = true;
+        
     }
 
     void ListOfAchievements()

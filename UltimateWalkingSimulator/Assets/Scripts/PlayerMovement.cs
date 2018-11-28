@@ -22,26 +22,37 @@ public class PlayerMovement : MonoBehaviour {
     public bool haveMoved = false;
     public bool haveJumped = false;
 
+    public bool canMove = false;
+    private float moveStoppingTimer;
+
+    public float startMoveStoppingTimer;
+    public bool jumpedOnce = false;
+
+    
+
     private float fallTime = 0.2f;
 
     public void Awake()
     {
         myRB = GetComponent<Rigidbody2D>();
+        moveStoppingTimer = startMoveStoppingTimer;
+        canMove = true;
     }
     public  void Update()
     {
-
-        if (Input.GetKey(KeyCode.A) /*&& player.transform.rotation.y == 0*/)
+        if(canMove == false)
         {
-            player.transform.rotation = new Quaternion(0,180,0,1);
+            moveStoppingTimer -= Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.D) /*&& player.transform.rotation.y == 180.0f*/)
+        else
         {
-            player.transform.rotation = new Quaternion(0, 0, 0, 1);
+            moveStoppingTimer = startMoveStoppingTimer;
         }
 
-            JumpFun();
-            Debug.DrawLine(transform.position, transform.position + Vector3.down * distToGround, Color.red);
+        if(moveStoppingTimer <= 0)
+        {
+            canMove = true;
+        }
 
     }
 
@@ -69,7 +80,14 @@ public class PlayerMovement : MonoBehaviour {
 
     void FixedUpdate () {
 
+        if (canMove == true)
+        {
             Movement();
+        }        
+        if (!jumpedOnce)
+        {
+            JumpFun();
+        }
 
     }
     

@@ -4,12 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Achievement : MonoBehaviour {
+public class Achievement : MonoBehaviour
+{
 
     public PlayerMovement myMovement;
     public AudioSource achievementSound;
+    public AudioSource finalAchievementSound;
+    public AudioSource HouseDoorSound;
+    public AudioSource ShopDoor;
 
-    public string[] achievementText = new string[14];
+    public string[] achievementText = new string[18];
     public string currentAchievement;
 
     public TMP_Text printAchievement;
@@ -28,15 +32,16 @@ public class Achievement : MonoBehaviour {
     public bool checkJump;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
 
         currentAchievement = achievementText[0];
         AchievementGained();
         clock = 0;
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         ListOfAchievements();
         Timer();
@@ -50,7 +55,7 @@ public class Achievement : MonoBehaviour {
         }
 
         if (myMovement.haveJumped == true && checkJump == false)
-        { 
+        {
             currentAchievement = achievementText[3];
             AchievementGained();
             checkJump = true;
@@ -58,7 +63,7 @@ public class Achievement : MonoBehaviour {
 
     }
 
-    void ExclamationMultiplyer ()
+    void ExclamationMultiplyer()
     {
 
         for (int i = 0; i < amountOfAchievements; i++)
@@ -68,12 +73,12 @@ public class Achievement : MonoBehaviour {
 
     }
 
-    void Timer ()
+    void Timer()
     {
         clock += Time.deltaTime;
     }
 
-    void ClockAchievements ()
+    void ClockAchievements()
     {
         if (clock >= 120 && runOnce == 2)
         {
@@ -95,12 +100,12 @@ public class Achievement : MonoBehaviour {
         }
     }
 
-    void AchievementGained ()
+    void AchievementGained()
     {
 
         ExclamationMultiplyer();
         printAchievement.text = "ACHIEVEMENT UNLOCKED!!! " + currentAchievement + exclamation;
-        //achievementSound.Play();
+        achievementSound.Play();
         amountOfAchievements++;
     }
 
@@ -121,8 +126,12 @@ public class Achievement : MonoBehaviour {
         achievementText[11] = "YOU JAYWALKED";
         achievementText[12] = "YOU GOT HOME WITH THE BREAD";
         achievementText[13] = "YOU COMPLETED THE GAME";
-
+        achievementText[14] = "YOU PICKED UP THE BREAD";
+        achievementText[15] = "YOU DIDN'T JAYWALK";
+        achievementText[16] = "YOU MADE A SANDWITCH";
+        achievementText[17] = "";
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
@@ -141,12 +150,14 @@ public class Achievement : MonoBehaviour {
         {
             currentAchievement = achievementText[4];
             AchievementGained();
+            HouseDoorSound.Play();
             hitDoor = true;
         }
         if (col.gameObject.tag == "Shop" && hitShop == false)
         {
             currentAchievement = achievementText[5];
             AchievementGained();
+            ShopDoor.Play();
             hitShop = true;
         }
         if (col.gameObject.tag == "Car" && hitCar == false)

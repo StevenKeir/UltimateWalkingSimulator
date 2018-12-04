@@ -8,6 +8,7 @@ public class FadeText : MonoBehaviour {
 
 
     public TMP_Text text;
+    public Image banner;
     
 
     public bool fadingOut;
@@ -15,15 +16,21 @@ public class FadeText : MonoBehaviour {
     public float timeBetweenFade;
     public float startTimeBetweenFade;
     public float fadeTime;
+    Color imageAlpha;
 
     private void Start()
     {
         timeBetweenFade = startTimeBetweenFade;
+        imageAlpha = banner.color;
+        //imageAlpha.a = 1f; //1f makes it fully visible, 0f makes it fully transparent.
+        banner.color = new Color(banner.color.r, banner.color.g, banner.color.b, imageAlpha.a);
+    
 
-    }
+}
     private void Update()
     {
-        if(timeBetweenFade >= 1)
+        banner.color = new Color(banner.color.r, banner.color.g, banner.color.b, imageAlpha.a);
+        if (timeBetweenFade >= 1.25)
         {
             fadingIn = false;
             fadingOut = true;
@@ -50,19 +57,26 @@ public class FadeText : MonoBehaviour {
             fadingIn = false;
             fadingOut = false;
         }
+        if(fadingIn == false && fadingOut == false && fadeTime > 0 && fadeTime < 1.20f)
+        {
+            imageAlpha.a = 0f;
+        }
 
     } 
 
     void TimeFadeOut()
     {
-        timeBetweenFade -= Time.deltaTime / fadeTime;
-        text.alpha = timeBetweenFade;        
+        timeBetweenFade -= Time.deltaTime;
+        text.alpha = timeBetweenFade;
+        imageAlpha.a = timeBetweenFade;
+        
     }
 
     void TimeFadeIn()
     {
-        timeBetweenFade += Time.deltaTime / fadeTime;
+        timeBetweenFade += Time.deltaTime;
         text.alpha = timeBetweenFade;
+        imageAlpha.a = timeBetweenFade;
     }
 
 

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ground
   - Door
+  - Fridge
+  - Bed
+  - TrafficLight
   layers:
   - Default
   - TransparentFX

@@ -29,15 +29,15 @@ public class Achievement : MonoBehaviour
     public bool hitDoor;
     public bool hitShop;
     public bool hitCar;
+    public bool hitBed;
+    public bool hitFridge;
+    public bool hitLight;
     public bool checkMove;
     public bool checkJump;
 
     // Use this for initialization
     void Start()
     {
-
-        currentAchievement = achievementText[0];
-        AchievementGained();
         clock = 0;
     }
 
@@ -48,12 +48,6 @@ public class Achievement : MonoBehaviour
         Timer();
         ClockAchievements();
 
-        if (myMovement.haveMoved == true && checkMove == false)
-        {
-            currentAchievement = achievementText[2];
-            AchievementGained();
-            checkMove = true;
-        }
 
         if (myMovement.haveJumped == true && checkJump == false)
         {
@@ -82,19 +76,19 @@ public class Achievement : MonoBehaviour
 
     void ClockAchievements()
     {
-        if (clock >= 120 && runOnce == 2)
+        if (clock >= 60 && runOnce == 2)
         {
             runOnce++;
             currentAchievement = achievementText[8];
             AchievementGained();
         }
-        else if (clock >= 60 && runOnce == 1)
+        else if (clock >= 30 && runOnce == 1)
         {
             runOnce++;
             currentAchievement = achievementText[7];
             AchievementGained();
         }
-        else if (clock >= 10 && runOnce == 0)
+        else if (clock >= 15 && runOnce == 0)
         {
             runOnce++;
             currentAchievement = achievementText[6];
@@ -122,13 +116,13 @@ public class Achievement : MonoBehaviour
 
         achievementText[0] = "YOU STARTED THE GAME";
         achievementText[1] = "YOU GOT OUT OF BED";
-        achievementText[2] = "YOUR WALKING";
+        achievementText[2] = "YOU HAVE NO BREAD, GO TO THE SHOPS";
         achievementText[3] = "YOU JUMPED";
-        achievementText[4] = "YOU OPEND THE DOOR";
+        achievementText[4] = "YOU OPENED THE DOOR";
         achievementText[5] = "YOU MADE IT TO THE SHOP";
-        achievementText[6] = "YOU PLAYED THE GAME FOR 10SECONDS";
-        achievementText[7] = "YOU PLAYED THE GAME FOR 1MINUTE";
-        achievementText[8] = "YOU PLAYED THE GAME FOR 2MINUTE";
+        achievementText[6] = "YOU PLAYED THE GAME FOR 15 SECONDS";
+        achievementText[7] = "YOU PLAYED THE GAME FOR 30 SECONDS";
+        achievementText[8] = "YOU PLAYED THE GAME FOR 1 MINUTE";
         achievementText[9] = "YOU PURCHASED BREAD";
         achievementText[10] = "YOU GOT HIT BY A CAR";
         achievementText[11] = "YOU JAYWALKED";
@@ -149,7 +143,12 @@ public class Achievement : MonoBehaviour
             AchievementGained();
             hitFloor = true;
         }
-
+        if (collision.gameObject.tag == "Bed" && hitFridge == false)
+        {
+            currentAchievement = achievementText[0];
+            AchievementGained();
+            hitBed = true;
+        }
     }
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -174,6 +173,19 @@ public class Achievement : MonoBehaviour
             AchievementGained();
             hitCar = true;
         }
+        if (col.gameObject.tag == "Fridge" && hitFridge == false)
+        {
+            currentAchievement = achievementText[2];
+            AchievementGained();
+            hitFridge = true;
+        }
+        if (col.gameObject.tag == "TrafficLight" && hitLight == false)
+        {
+            currentAchievement = achievementText[11];
+            AchievementGained();
+            hitLight = true;
+        }
+
     }
 
 

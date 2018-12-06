@@ -17,10 +17,22 @@ public class animations : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetAxis("Horizontal") >= 0.05f)
         {
-            anim.SetTrigger("walk");
+            anim.SetBool("walk", true);
         }
+        else {
+            anim.SetBool("walk", false);
+        }
+
+        if (Input.GetAxis("Horizontal") <= -0.05f)
+        {
+            anim.SetBool("walkleft", true);
+        }
+        else {
+            anim.SetBool("walkleft", false);
+        }
+
     }
 
 }

@@ -1300,6 +1300,7 @@ GameObject:
   - component: {fileID: 409571094}
   - component: {fileID: 409571093}
   - component: {fileID: 409571095}
+  - component: {fileID: 409571096}
   m_Layer: 0
   m_Name: Road
   m_TagString: Untagged
@@ -1391,6 +1392,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20.699959, y: 14.522924}
   m_EdgeRadius: 0
+--- !u!95 &409571096
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 409571092}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 79bd9b61d4703724da36f5c6fc5f989f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &421349338
 GameObject:
   m_ObjectHideFlags: 0
@@ -5639,6 +5658,7 @@ GameObject:
   - component: {fileID: 1807300143}
   - component: {fileID: 1807300145}
   - component: {fileID: 1807300146}
+  - component: {fileID: 1807300147}
   m_Layer: 0
   m_Name: RedLight
   m_TagString: TrafficLight
@@ -5748,6 +5768,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7.28, y: 15.9}
   m_EdgeRadius: 0
+--- !u!95 &1807300147
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1807300142}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 309c5c71d9f6e7545a93a3d03ad4eac8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1818504482
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,10 @@ TagManager:
   - Fridge
   - Bed
   - TrafficLight
+  - ShopKeep
+  - Shop
+  - Breed
+  - CupBoard
   layers:
   - Default
   - TransparentFX

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class FadeText : MonoBehaviour {
 
+    public Achievement myAchievement;
 
     public TMP_Text text;
     public Image banner;
@@ -30,13 +31,24 @@ public class FadeText : MonoBehaviour {
     private void Update()
     {
         banner.color = new Color(banner.color.r, banner.color.g, banner.color.b, imageAlpha.a);
-        if (timeBetweenFade >= 1.25)
+        if (myAchievement.finishGame == false)
         {
-            fadingIn = false;
-            fadingOut = true;
+            if (timeBetweenFade >= 1.25)
+            {
+                fadingIn = false;
+                fadingOut = true;
+            }
+        }
+        if (myAchievement.finishGame == true)
+        {
+            if (timeBetweenFade >= 30)
+            {
+                fadingIn = false;
+                fadingOut = true;
+            }
         }
 
-        if(timeBetweenFade < 0)
+        if (timeBetweenFade < 0)
         {
             fadingOut = false;
             

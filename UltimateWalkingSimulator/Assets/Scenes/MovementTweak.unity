@@ -1592,9 +1592,10 @@ GameObject:
   m_Component:
   - component: {fileID: 473651512}
   - component: {fileID: 473651511}
+  - component: {fileID: 473651513}
   m_Layer: 0
   m_Name: ShopDoor
-  m_TagString: Door
+  m_TagString: Shop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1658,6 +1659,31 @@ Transform:
   m_Father: {fileID: 347836853}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &473651513
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 473651510}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.15, y: 8.9}
+    newSize: {x: 2.15, y: 8.9}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.15, y: 8.9}
+  m_EdgeRadius: 0
 --- !u!1 &495279286
 GameObject:
   m_ObjectHideFlags: 0
@@ -3380,9 +3406,10 @@ GameObject:
   m_Component:
   - component: {fileID: 973037869}
   - component: {fileID: 973037868}
+  - component: {fileID: 973037870}
   m_Layer: 0
   m_Name: Cupboard
-  m_TagString: Untagged
+  m_TagString: CupBoard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3446,6 +3473,31 @@ Transform:
   m_Father: {fileID: 761872117}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &973037870
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 973037867}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -4.8, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.81, y: 5.8}
+    newSize: {x: 5.81, y: 5.8}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 15.4, y: 5.8}
+  m_EdgeRadius: 0
 --- !u!1 &1004765108
 GameObject:
   m_ObjectHideFlags: 0
@@ -3515,7 +3567,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1004765108}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -33.65334, y: -4.6197815, z: -10.308}
+  m_LocalPosition: {x: -33.65334, y: -4.6197815, z: -9.66}
   m_LocalScale: {x: 0.237808, y: 0.237808, z: 0.237808}
   m_Children: []
   m_Father: {fileID: 761872117}
@@ -3816,6 +3868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 583a0c1639f9afa4eb108b51d2665073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myAchievement: {fileID: 1138983695}
   text: {fileID: 2141971279}
   banner: {fileID: 1314610987}
   fadingOut: 0
@@ -3936,8 +3989,11 @@ MonoBehaviour:
   textBox: {fileID: 0}
   amountOfAchievements: 0
   runOnce: 0
+  exControl: 0
   clock: 0
   exclamation: 
+  timer: 0
+  wait: 0
   hitFloor: 0
   hitDoor: 0
   hitShop: 0
@@ -3947,6 +4003,10 @@ MonoBehaviour:
   hitLight: 0
   checkMove: 0
   checkJump: 0
+  hitBread: 0
+  madeSandwitch: 0
+  finishGame: 0
+  shopKeeper: 0
 --- !u!212 &1138983696
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5421,9 +5481,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1609484734}
   - component: {fileID: 1609484733}
+  - component: {fileID: 1609484735}
   m_Layer: 0
   m_Name: BreadStoreShelf
-  m_TagString: Untagged
+  m_TagString: Breed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5487,6 +5548,31 @@ Transform:
   m_Father: {fileID: 347836853}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1609484735
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1609484732}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -2.6, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 12.17, y: 12}
+    newSize: {x: 12.17, y: 12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 6.92, y: 12}
+  m_EdgeRadius: 0
 --- !u!82 &1652142860 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 82056920575521264, guid: e54b5d4e00caa5a4ea17bdddaf03d469,
@@ -5506,9 +5592,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1710520381}
   - component: {fileID: 1710520380}
+  - component: {fileID: 1710520382}
   m_Layer: 0
   m_Name: ShopMan
-  m_TagString: Untagged
+  m_TagString: ShopKeep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5572,6 +5659,31 @@ Transform:
   m_Father: {fileID: 347836853}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1710520382
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1710520379}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.13, y: 8.16}
+    newSize: {x: 3.13, y: 8.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 11.46, y: 8.16}
+  m_EdgeRadius: 0
 --- !u!1 &1743139790
 GameObject:
   m_ObjectHideFlags: 0
